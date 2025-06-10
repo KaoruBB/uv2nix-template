@@ -15,15 +15,19 @@ A minimal template for Python projects using uv2nix and Nix flakes.
 - [Nix](https://nixos.org/download.html) with flakes enabled
 - [direnv](https://direnv.net/) (recommended for automatic environment switching)
 
-### Usage
+### Creating a New Project
 
-```
-# Clone this repository
-git clone https://github.com/KaoruBB/uv2nix-template
-cd uv2nix-template
+1. Click the "Use this template" button at the top of this repository page
+2. OR use GitHub CLI: `gh repo create my-project --template KaoruBB/uv2nix-template`
+3. Clone your new repository and update the project details in `pyproject.toml`
+
+### Development Workflow
+
+```bash
+# After cloning your new repository
+cd your-project-name
 
 # If using direnv:
-# Allow .envrc file
 direnv allow
 
 # Alternatively, manually enter the development shell:
