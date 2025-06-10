@@ -151,7 +151,6 @@
               shellHook = ''
                 unset PYTHONPATH # Avoid interference from system Python path
                 export REPO_ROOT=$(git rev-parse --show-toplevel)
-                ipython kernel install --user --name=uv2nix-template
               '';
             };
           default = uv2nix;
