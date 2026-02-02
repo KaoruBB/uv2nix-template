@@ -49,7 +49,7 @@
         # Overrides based on nixpkgs scipy derivation
         pyprojectOverrides = final: prev: { };
 
-        python = pkgs.python311;
+        python = pkgs.python312; # specify version of Python
 
         # Construct the final Python package set
         pythonSet =
@@ -88,14 +88,13 @@
               python
               pkgs.uv
             ];
-            env =
-              {
-                UV_PYTHON_DOWNLOADS = "never";
-                UV_PYTHON = python.interpreter;
-              }
-              // lib.optionalAttrs pkgs.stdenv.isLinux {
-                LD_LIBRARY_PATH = lib.makeLibraryPath pkgs.pythonManylinuxPackages.manylinux1;
-              };
+            env = {
+              UV_PYTHON_DOWNLOADS = "never";
+              UV_PYTHON = python.interpreter;
+            }
+            // lib.optionalAttrs pkgs.stdenv.isLinux {
+              LD_LIBRARY_PATH = lib.makeLibraryPath pkgs.pythonManylinuxPackages.manylinux1;
+            };
             shellHook = ''
               unset PYTHONPATH
               echo "Impure shell: Run 'uv venv' and 'uv sync' manually."
